@@ -11,5 +11,14 @@ spring:
     hibernate:
       ddl-auto: create
 
+auth-service:
+  jwt:
+    private-key-path: keys/private_pkcs8.pem
+    public-key-path: keys/public.pem
+
+logging:
+  level:
+    org.springframework.security: trace
+
 server:
   port: 8081
