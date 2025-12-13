@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import ru.mirea.newrav1k.authservice.security.exception.RSAKeyLoadException;
 import ru.mirea.newrav1k.authservice.security.utils.KeyUtils;
 
 import java.security.interfaces.RSAPrivateKey;
@@ -27,7 +28,7 @@ public class RSAKeyConfiguration {
 
             return rsaPrivateKey;
         } catch (Exception exception) {
-            throw new RuntimeException("RSA Private Key could not be loaded", exception);
+            throw new RSAKeyLoadException("RSA Private Key could not be loaded", exception);
         }
     }
 
@@ -39,7 +40,7 @@ public class RSAKeyConfiguration {
 
             return rsaPublicKey;
         } catch (Exception exception) {
-            throw new RuntimeException("RSA Public Key could not be loaded", exception);
+            throw new RSAKeyLoadException("RSA Public Key could not be loaded", exception);
         }
     }
 
